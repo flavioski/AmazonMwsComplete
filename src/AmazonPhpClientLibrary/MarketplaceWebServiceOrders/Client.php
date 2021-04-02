@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2009-2020 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2021 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -13,8 +13,8 @@
  * @category Amazon
  * @package  Marketplace Web Service Orders
  * @version  2013-09-01
- * Library Version: 2020-05-11
- * Generated: Fri May 08 09:10:38 GMT 2020
+ * Library Version: 2021-01-06
+ * Generated: Wed Jan 06 18:02:52 UTC 2021
  */
 
 /**
@@ -30,7 +30,7 @@ class MarketplaceWebServiceOrders_Client implements MarketplaceWebServiceOrders_
 {
 
     const SERVICE_VERSION = '2013-09-01';
-    const MWS_CLIENT_VERSION = '2020-05-11';
+    const MWS_CLIENT_VERSION = '2021-01-06';
 
     /** @var string */
     private  $_awsAccessKeyId = null;
@@ -323,6 +323,18 @@ class MarketplaceWebServiceOrders_Client implements MarketplaceWebServiceOrders_
         }
         if ($request->isSetEasyShipShipmentStatus()) {
             $parameters['EasyShipShipmentStatus'] =  $request->getEasyShipShipmentStatus();
+        }
+        if ($request->isSetActualFulfillmentSupplySourceId()) {
+            $parameters['ActualFulfillmentSupplySourceId'] =  $request->getActualFulfillmentSupplySourceId();
+        }
+        if ($request->isSetIsISPU()) {
+            $parameters['IsISPU'] =  $request->getIsISPU() ? "true" : "false";
+        }
+        if ($request->isSetItem()) {
+            $ItemListOrdersRequest = $request->getItem();
+            foreach  ($ItemListOrdersRequest->getStoreChainStoreId() as $StoreChainStoreIdItemIndex => $StoreChainStoreIdItem) {
+                $parameters['Item' . '.' . 'StoreChainStoreId' . '.'  . ($StoreChainStoreIdItemIndex + 1)] =  $StoreChainStoreIdItem;
+            }
         }
 
         return $parameters;
